@@ -13,10 +13,10 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "governor_comments"
-  gem.homepage = "http://github.com/carpeliam/governor_comments"
+  gem.homepage = "http://carpeliam.github.com/governor"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Comments plugin for the Rails 3-based Governor blogging system.}
+  gem.description = %Q{Comments plugin for the Rails 3-based Governor blogging system.}
   gem.email = "liam@carpeliam.com"
   gem.authors = ["Liam Morley"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
