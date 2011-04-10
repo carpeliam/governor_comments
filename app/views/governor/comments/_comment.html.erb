@@ -1,0 +1,27 @@
+<% if !comment.hidden? or governor_authorized?(:edit, resource) %>
+    <%= content_tag_for(:li, comment, :class => cycle('odd', 'even')) do %>
+        <% unless comment.title.blank? %><div class="comment_title"><%= comment.title %></div><% end %>
+        <div class='comment_gravatar'>
+            <%= image_tag comment.gravatar_url, :size => '48x48', :alt => comment.commenter.name %>
+        </div>
+        <div class='comment_body'>
+            <%= comment.content %>
+            <div class='comment_footer'>
+                posted <%= show_time_ago comment.updated_at %> by
+                <%= link_to_if comment.commenter.website.present?, comment.commenter.name, comment.commenter.website %>
+            </div>
+        </div>
+        <% if comment.respond_to?(:spam?) and governor_authorized?(:edit, resource) %>
+            <div class="spam_check">
+              <% if comment.hidden? %>
+                <span class="spam_warning">This comment has been marked as spam.</span>
+                <%= link_to 'Not spam?', polymorphic_path([resource, comment], :action => :not_spam), :method => :put, :class => 'not_spam' %>
+                <%= link_to 'Delete', [resource, comment], :method => :delete, :confirm => 'Are you sure you want to remove this comment?', :class => 'delete' %>
+              <% else %>
+                <%= link_to 'Mark as spam', polymorphic_path([resource, comment], :action => :mark_spam), :method => :put, :class => 'mark_spam', :confirm => 'Are you sure this is spam?' %>
+                <%= link_to 'Delete', [resource, comment], :method => :delete, :confirm => 'Are you sure you want to remove this comment? It has not been marked as spam.', :class => 'delete' %>
+              <% end %>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,2 @@
+[ <%= link_to pluralize(comment_count(article), 'comment'), polymorphic_path(article, :anchor => 'comments') %> |
+<%= link_to 'add a comment', polymorphic_path(article, :anchor => 'comments') %> ]
