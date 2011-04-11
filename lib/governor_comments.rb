@@ -3,9 +3,11 @@ require 'governor_comments/rails'
 
 comments = Governor::Plugin.new('comments')
 comments.add_migration(File.join(File.dirname(__FILE__), 'templates', 'create_comments.rb'))
-comments.add_child_resource :comments do
-  member do
-    put 'mark_spam', 'not_spam'
+comments.set_routes do
+  resources :comments do
+    member do
+      put 'mark_spam', 'not_spam'
+    end
   end
 end
 comments.add_helper "GovernorCommentsHelper"

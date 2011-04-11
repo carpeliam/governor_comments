@@ -9,7 +9,7 @@ gem 'sqlite3'
 
 gem 'devise'
 gem 'rakismet'
-gem 'governor', '>= 0.2.0'
+gem 'governor', '>= 0.2.2'
 gem 'governor_comments', :path => '../..'
 
 gem 'dynamic_form'

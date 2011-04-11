@@ -1,7 +1,8 @@
 PATH
   remote: ./
   specs:
-    governor_comments (0.0.0)
+    governor_comments (0.1.0)
+      governor (>= 0.2.0)
       rails (~> 3.0.5)
 
 GEM
@@ -51,7 +52,7 @@ GEM
       factory_girl (~> 2.0.0.beta)
       rails (>= 3.0.0)
     git (1.2.5)
-    governor (0.2.0)
+    governor (0.2.2)
       rails (~> 3.0.5)
     i18n (0.5.0)
     jeweler (1.5.2)
@@ -116,7 +117,7 @@ DEPENDENCIES
   dynamic_form
   factory_girl (~> 2.0.0.beta)
   factory_girl_rails (~> 1.1.beta)
-  governor (>= 0.2.0)
+  governor (>= 0.2.2)
   governor_comments!
   jeweler (~> 1.5.2)
   mocha
