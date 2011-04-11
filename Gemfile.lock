@@ -1,8 +1,8 @@
 PATH
   remote: ./
   specs:
-    governor_comments (0.1.0)
-      governor (>= 0.2.0)
+    governor_comments (0.1.1)
+      governor (>= 0.2.2)
       rails (~> 3.0.5)
 
 GEM

@@ -12,7 +12,7 @@ comment on your blog.
 Dependencies
 ------------
 
-* Governor, version 0.2.0 or higher. In addition, it requires that your User
+* Governor, version 0.2.2 or higher. In addition, it requires that your User
   class (or whatever classes can be associated with an article) have `name`,
   `email`, and `website` fields.
 * ActiveRecord
