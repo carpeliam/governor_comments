@@ -4,7 +4,7 @@ class GovernorCreateComments < ActiveRecord::Migration
       t.string      :title, :content
       t.boolean     :hidden, :default => false
       t.references  :commenter, :polymorphic => true
-      t.references  :<%= article %>
+      t.references  :<%= mapping.singular %>
       t.timestamps
     end
   

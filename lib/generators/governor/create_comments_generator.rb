@@ -4,6 +4,7 @@ module Governor
   class CreateCommentsGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
     source_root File.expand_path('../templates', __FILE__)
+    argument :resource, :type => :string, :default => Governor.default_resource.plural.to_s
   
     def self.next_migration_number(dirname)
       if ActiveRecord::Base.timestamped_migrations
@@ -20,6 +21,11 @@ module Governor
   
     def create_migration_file
       migration_template 'migrations/create_comments.rb', "db/migrate/governor_create_comments.rb", :skip => true
+    end
+    
+    private
+    def mapping
+      Governor.resources[resource.pluralize.to_sym]
     end
   end
 end
