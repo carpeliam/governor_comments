@@ -1,4 +1,3 @@
-require 'governor'
 module GovernorComments
   class Engine < ::Rails::Engine
     config.to_prepare do

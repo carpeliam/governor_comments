@@ -2,5 +2,5 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-  unauthorized_edit: "You're not allowed to edit this %{resource_type}."
+  governor_comments:
+    manage_comments: "Manage Comments"

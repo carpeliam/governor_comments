@@ -15,5 +15,8 @@ comments.register_model_callback do |base|
 end
 comments.register_partial :after_article_whole, 'articles/comments'
 comments.register_partial :after_article_description, 'articles/comment_link'
+comments.add_to_navigation do
+  concat(link_to(t('governor_comments.manage_comments'), comments_path))
+end
 
 Governor::PluginManager.register comments

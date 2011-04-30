@@ -1,0 +1,8 @@
+<h1>Comments Management</h1>
+
+<% @comments.each do |c| %>
+  <div class="comment">
+    <% if c.title %><strong><%= c.title %></strong><br><% end -%>
+    <%= c.content %>
+  </div>
+<% end %>

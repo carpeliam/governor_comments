@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/carpeliam/governor.git
+  revision: 02e939cd0d8bb4c33549dc5c293996c049e37e6c
+  specs:
+    governor (0.4.0)
+      rails (~> 3.0.5)
+
 PATH
   remote: ./
   specs:
@@ -52,8 +59,6 @@ GEM
       factory_girl (~> 2.0.0.beta)
       rails (>= 3.0.0)
     git (1.2.5)
-    governor (0.2.2)
-      rails (~> 3.0.5)
     i18n (0.5.0)
     jeweler (1.5.2)
       bundler (~> 1.0.0)
@@ -66,6 +71,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mocha (0.9.12)
+    nokogiri (1.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -107,6 +113,10 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
+    webrat (0.7.3)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
 
 PLATFORMS
   ruby
@@ -117,7 +127,7 @@ DEPENDENCIES
   dynamic_form
   factory_girl (~> 2.0.0.beta)
   factory_girl_rails (~> 1.1.beta)
-  governor (>= 0.2.2)
+  governor!
   governor_comments!
   jeweler (~> 1.5.2)
   mocha
@@ -125,3 +135,4 @@ DEPENDENCIES
   rakismet
   rspec-rails
   sqlite3
+  webrat
