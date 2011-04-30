@@ -2,6 +2,7 @@ require 'spec_helper'
 
 class ActionView::Base
   include Governor::Controllers::Helpers
+  include GovernorCommentsHelper
   
   def params
     {:governor_mapping => :articles}
@@ -24,6 +25,7 @@ module Governor
       sign_in @user
       render
 
+      rendered.should =~ /1 comment/
       rendered.should =~ /add a comment/
     end
   end

@@ -13,7 +13,6 @@ end
 comments.register_model_callback do |base|
   base.has_many :comments, :dependent => :destroy
 end
-comments.add_helper "GovernorCommentsHelper"
 comments.register_partial :after_article_whole, 'articles/comments'
 comments.register_partial :after_article_description, 'articles/comment_link'
 
