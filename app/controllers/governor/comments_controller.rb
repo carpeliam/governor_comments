@@ -2,17 +2,12 @@ module Governor
   class CommentsController < ApplicationController
     include Governor::Controllers::Helpers
     
-    before_filter :init_resource, :except => :index
-    before_filter :authorize_governor!, :only => :index
-    before_filter :authorize_commenter!, :except => [:index, :new, :create]
+    before_filter :init_resource
+    before_filter :authorize_commenter!, :except => [:new, :create]
     before_filter :get_comment, :only => [:edit, :update, :destroy, :mark_spam, :not_spam]
     
     helper :governor
     helper Governor::Controllers::Helpers
-    
-    def index
-      @comments = Comment.all(:include => [:commenter])
-    end
     
     def create
       params[:comment][:commenter] = governor_logged_in? ? the_governor : Guest.new(params[:commenter])

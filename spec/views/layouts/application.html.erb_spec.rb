@@ -13,6 +13,6 @@ describe "layouts/application.html.erb" do
   
   it "links to comment review page" do
     render
-    rendered.should have_selector('a', :href => comments_path, :content => 'Manage Comments')
+    rendered.should have_selector('a', :href => edit_comments_articles_path, :content => 'Manage Comments')
   end
 end
