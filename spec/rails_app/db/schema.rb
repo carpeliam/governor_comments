@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110405030324) do
+ActiveRecord::Schema.define(:version => 20110501055541) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20110405030324) do
     t.boolean  "hidden",         :default => false
     t.integer  "commenter_id"
     t.string   "commenter_type"
-    t.integer  "article_id"
+    t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

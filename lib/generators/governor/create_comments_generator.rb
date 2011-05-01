@@ -5,6 +5,8 @@ module Governor
     include Rails::Generators::Migration
     source_root File.expand_path('../templates', __FILE__)
     argument :resource, :type => :string, :default => Governor.default_resource.plural.to_s
+    class_option :polymorphic, :type => :boolean, :default => false, :desc => 'Set to true if you want to associate comments with multiple object types. False by default.'
+    desc 'Adds Comment and Guest models and accompanying migrations to your application.'
   
     def self.next_migration_number(dirname)
       if ActiveRecord::Base.timestamped_migrations

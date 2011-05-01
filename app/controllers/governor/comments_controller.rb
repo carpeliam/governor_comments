@@ -3,6 +3,7 @@ module Governor
     include Governor::Controllers::Helpers
     
     before_filter :init_resource, :except => :index
+    before_filter :authorize_governor!, :only => :index
     before_filter :authorize_commenter!, :except => [:index, :new, :create]
     before_filter :get_comment, :only => [:edit, :update, :destroy, :mark_spam, :not_spam]
     
@@ -10,7 +11,7 @@ module Governor
     helper Governor::Controllers::Helpers
     
     def index
-      @comments = Comment.all
+      @comments = Comment.all(:include => [:commenter])
     end
     
     def create

@@ -7,7 +7,7 @@ module Governor
     before(:each) do
       @user = Factory(:user)
       @article = Factory(:article, :author => @user)
-      @comment = Factory(:comment, :article => @article, :commenter => @user)
+      @comment = Factory(:comment, :resource => @article, :commenter => @user)
       sign_in @user
     end
     

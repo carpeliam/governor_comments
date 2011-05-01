@@ -30,7 +30,10 @@ Once you've installed the gem into your app, you need to run the generator:
 
 If you've only created one type of resource (which is typical), then you won't
 need any arguments. Otherwise, you'll need to specify which model you want to
-add comments to. This will create a Comment class and associated migration.
+add comments to. This will create a Comment class and associated migration. If
+you've created multiple resource types and you'd like to use comments with
+multiple types, then specify <code>--polymorphic</code> as an option.
+
 Make sure to add the +name+, +email+, and +website+ fields to your User model
 if they don't exist already.
 

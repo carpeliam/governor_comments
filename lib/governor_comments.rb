@@ -11,7 +11,7 @@ comments.set_routes do
   end
 end
 comments.register_model_callback do |base|
-  base.has_many :comments, :dependent => :destroy
+  base.has_many :comments, :foreign_key => 'resource_id', :dependent => :destroy
 end
 comments.register_partial :after_article_whole, 'articles/comments'
 comments.register_partial :after_article_description, 'articles/comment_link'
