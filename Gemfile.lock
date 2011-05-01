@@ -93,6 +93,7 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rakismet (1.0.1)
+    rcov (0.9.9)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -133,6 +134,7 @@ DEPENDENCIES
   mocha
   rails (~> 3.0.5)
   rakismet
+  rcov
   rspec-rails
   sqlite3
   webrat

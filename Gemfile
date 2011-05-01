@@ -8,6 +8,7 @@ group :development, :test do
   gem 'jeweler', '~> 1.5.2'
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'rcov'
   gem 'webrat'
   gem 'mocha'
   gem 'factory_girl', '~> 2.0.0.beta'
