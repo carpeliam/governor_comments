@@ -1,8 +1,27 @@
 <h1>Comments Management</h1>
 
-<% @comments.each do |c| %>
-  <div class="comment">
-    <% if c.title %><strong><%= c.title %></strong><br><% end -%>
-    <%= c.content %>
-  </div>
+<%= form_tag send("update_comments_#{mapping.plural}_path"), :method => :put do %>
+<table class="comments">
+  <tr>
+    <th></th>
+    <th>Author</th>
+    <th>Comment</th>
+    <th>Article</th>
+  </tr>
+  <% @comments.each do |c| %>
+    <tr>
+      <td class="author">
+        <%= link_to_if c.commenter.website.present?, c.commenter.name, c.commenter.website %>
+        <% if c.commenter.email.present? %>
+          <br><%= mail_to c.commenter.email, 'Contact', :encode => :javascript %>
+        <% end %>
+      </td>
+      <td class="comment">
+        <% if c.title %><strong><%= c.title %></strong><br><% end -%>
+        <%= c.content %>
+      </td>
+      <td class="article"><%= link_to c.resource, c.resource.title %></td>
+    </tr>
+  <% end %>
+</table>
 <% end %>
