@@ -15,7 +15,9 @@ comments.set_routes do
   end
 end
 comments.register_model_callback do |base|
-  base.has_many :comments, :foreign_key => 'resource_id', :dependent => :destroy
+  association = Comment.reflect_on_association(:resource)
+  comment_args = (association.options[:polymorphic]) ? {:as => 'resource'} : {:foreign_key => 'resource_id'}
+  base.has_many :comments, comment_args.merge(:dependent => :destroy)
 end
 comments.register_partial :after_article_whole, 'articles/comments'
 comments.register_partial :after_article_description, 'articles/comment_link'
