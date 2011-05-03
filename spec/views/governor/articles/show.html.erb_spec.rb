@@ -7,6 +7,10 @@ class ActionView::Base
   def params
     {:governor_mapping => :articles}
   end
+  
+  def action_name
+    'new'
+  end
 end
 
 module Governor
@@ -20,6 +24,7 @@ module Governor
       assign(:article, @article)
       assign(:comment, @comment)
     end
+    
     
     it "shows the comments" do
       sign_in @user

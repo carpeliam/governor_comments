@@ -56,24 +56,12 @@ module Governor
     end
   
     def mark_spam
-      @comment.update_attribute(:hidden, true)
-      if @comment.respond_to?(:spam!)
-        @comment.spam!
-        flash[:notice] = 'That comment has been marked as spam, and will no longer be visible to other viewers. To remove it completely, you can delete it.'
-      else
-        flash[:warning] = 'Spam protection has not been installed. Please install and configure rakismet before continuing.'
-      end
+      @comment.mark_spam
       redirect_to resource
     end
   
     def not_spam
-      @comment.update_attribute(:hidden, false)
-      if @comment.respond_to?(:ham!)
-        @comment.ham!
-        flash[:notice] = 'That comment has been marked as not spam, and will now be visible to other viewers.'
-      else
-        flash[:warning] = 'Spam protection has not been installed. Please install and configure rakismet before continuing.'
-      end
+      @comment.not_spam
       redirect_to resource
     end
     

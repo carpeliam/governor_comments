@@ -22,7 +22,7 @@ end
 comments.register_partial :after_article_whole, 'articles/comments'
 comments.register_partial :after_article_description, 'articles/comment_link'
 comments.add_to_navigation do |resource|
-  concat(link_to(t('governor_comments.manage_comments'), send("edit_comments_#{resource}_path")))
+  concat(link_to(t('governor_comments.manage_comments'), polymorphic_path(resource, :action => :edit_comments)))
 end
 
 Governor::PluginManager.register comments

@@ -1,27 +1,43 @@
 <h1>Comments Management</h1>
 
-<%= form_tag send("update_comments_#{mapping.plural}_path"), :method => :put do %>
-<table class="comments">
-  <tr>
-    <th></th>
-    <th>Author</th>
-    <th>Comment</th>
-    <th>Article</th>
-  </tr>
-  <% @comments.each do |c| %>
+<%= form_tag polymorphic_path(mapping.plural, :action => :update_comments), :method => :put do %>
+  <div class="bulkActions">
+    <% options = %w(mark_spam not_spam destroy).inject([]) {|a,action| a << [t("governor_comments.#{action}"), action] } %>
+    <%= select_tag :bulk_operation, options_for_select([['Action', ''], *options]) %>
+    <%= submit_tag t('governor_comments.submit') %>
+  </div>
+  <table class="comments">
     <tr>
-      <td class="author">
-        <%= link_to_if c.commenter.website.present?, c.commenter.name, c.commenter.website %>
-        <% if c.commenter.email.present? %>
-          <br><%= mail_to c.commenter.email, 'Contact', :encode => :javascript %>
-        <% end %>
-      </td>
-      <td class="comment">
-        <% if c.title %><strong><%= c.title %></strong><br><% end -%>
-        <%= c.content %>
-      </td>
-      <td class="article"><%= link_to c.resource, c.resource.title %></td>
+      <th></th>
+      <th>Author</th>
+      <th>Comment</th>
+      <th>Article</th>
     </tr>
-  <% end %>
-</table>
+    <% @comments.each do |c| %>
+      <tr>
+        <td class="checkbox">
+          <%= check_box_tag "comments[#{c.id}]" %>
+        </td>
+        <td class="author">
+          <%= link_to_if c.commenter.website.present?, c.commenter.name, c.commenter.website %>
+          <% if c.commenter.email.present? %>
+            <br><%= mail_to c.commenter.email, 'Contact', :encode => :javascript %>
+          <% end %>
+        </td>
+        <td class="comment">
+          <% if c.title %><strong><%= c.title %></strong><br><% end -%>
+          <%= c.content %>
+          <div class="commentActions">
+            <%= link_to t('governor_comments.reply'), polymorphic_path(c.resource, :anchor => :new_comment) %> |
+            <%= link_to t('governor_comments.edit'), polymorphic_path([c.resource, c], :action => :edit) %> |
+            <% spam_action = (c.hidden? ? 'not' : 'mark') + '_spam' %>
+            <%= link_to t(spam_action, :scope => 'governor_comments'), polymorphic_path([c.resource, c], :action => spam_action), :method => :put %> |
+            <%= link_to t('governor_comments.destroy'), polymorphic_path([c.resource, c]), :method => :delete, :confirm => 'Are you sure you want to remove this comment? It has not been marked as spam.' %>
+          </div>
+        </td>
+        <td class="article"><%= link_to c.resource.title, c.resource %></td>
+      </tr>
+    <% end %>
+  </table>
+  
 <% end %>

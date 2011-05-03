@@ -1,0 +1,4 @@
+<h1>edit comment</h1>
+<%= form_for [resource, @comment] do |f| %>
+  <% render :partial => 'governor/comments/form', :locals => {:f => f} %>
+<% end %>

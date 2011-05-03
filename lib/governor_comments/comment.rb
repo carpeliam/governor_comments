@@ -14,6 +14,16 @@ module GovernorComments
       base.validates_presence_of :content
     end
     
+    def mark_spam
+      update_attribute(:hidden, true)
+      spam! if respond_to?(:spam!)
+    end
+    
+    def not_spam
+      update_attribute(:hidden, false)
+      ham! if respond_to?(:ham!)
+    end
+    
     def gravatar_url(size = 48, default = "http://github.com/images/gravatars/gravatar-#{size}.png")
       if commenter.respond_to? :email
         hash = MD5::md5 commenter.email.downcase

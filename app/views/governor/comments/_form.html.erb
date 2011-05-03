@@ -1,0 +1,11 @@
+<%= f.error_messages %>
+<% if f.object.new_record? && !governor_logged_in? %>
+  <%= fields_for :commenter, Guest.new do |gf| %>
+    <%= gf.text_field :name %> <%= gf.label :name, 'Name (required)' %><br/>
+    <%= gf.text_field :email %> <%= gf.label :email, 'E-Mail (required, will not be published)' %><br/>
+    <%= gf.text_field :website %> <%= gf.label :website %><br/>
+  <% end %>
+<% end %>
+<%= f.text_field :title %> <%= f.label :title %><br/>
+<%= f.text_area :content, :size => '50x7' %>
+<p><%= f.submit "#{action_name.capitalize} Comment" %></p>

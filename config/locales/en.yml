@@ -4,3 +4,9 @@
 en:
   governor_comments:
     manage_comments: "Manage Comments"
+    reply: "Reply"
+    edit: "Edit"
+    mark_spam: "Mark as Spam"
+    not_spam: "Not Spam"
+    destroy: "Delete"
+    submit: "Apply"
