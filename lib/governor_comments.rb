@@ -1,3 +1,4 @@
+require File.expand_path('../governor/controllers/methods.rb',  __FILE__)
 require 'governor_comments/comment'
 require 'governor_comments/rails'
 
@@ -10,7 +11,7 @@ comments.set_routes do
   end
   resources :comments, :module => :governor do
     member do
-      put 'mark_spam', 'not_spam'
+      post 'mark_spam', 'not_spam'
     end
   end
 end

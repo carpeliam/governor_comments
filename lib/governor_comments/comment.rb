@@ -11,6 +11,9 @@ module GovernorComments
                             :comment_type => 'comment'
       end
       
+      base.scope :hidden, base.where(:hidden => true)
+      base.scope :public, base.where(:hidden => false)
+      
       base.validates_presence_of :content
     end
     
