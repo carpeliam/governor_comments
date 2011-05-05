@@ -1,0 +1,18 @@
+table.comments th {
+  text-align: left;
+}
+table.comments td {
+  vertical-align: top;
+}
+
+.author {
+  width: 8em;
+}
+
+.comment {
+  width: 15em;
+}
+
+.comment .commentActions {
+  display: none;
+}

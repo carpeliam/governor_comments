@@ -8,6 +8,11 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module RailsApp
   class Application < Rails::Application
+    # Added by the Rails 3 jQuery Template
+    # http://github.com/lleger/Rails-3-jQuery, written by Logan Leger
+    config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    config.action_view.javascript_expansions[:cdn] = %w(https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js rails)
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -38,5 +43,10 @@ module RailsApp
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    config.paths.public = File.expand_path(File.join(Rails.root, '..', '..', 'lib', 'generators', 'governor', 'templates', 'assets'))
+    # config.paths.public.images = File.expand_path(File.join(Rails.root, '..', '..', 'lib', 'generators', 'governor', 'templates', 'assets', 'images'))
+    config.paths.public.javascripts = File.expand_path(File.join(Rails.root, '..', '..', 'lib', 'generators', 'governor', 'templates', 'assets', 'javascripts'))
+    config.paths.public.stylesheets = File.expand_path(File.join(Rails.root, '..', '..', 'lib', 'generators', 'governor', 'templates', 'assets', 'stylesheets'))
   end
 end
