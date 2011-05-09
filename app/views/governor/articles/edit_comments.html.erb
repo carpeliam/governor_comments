@@ -1,11 +1,14 @@
 <h1>Comments Management</h1>
 
 <%= form_tag polymorphic_path(mapping.plural, :action => :update_comments), :method => :put do %>
+  <% bulk_actions = capture do -%>
   <div class="bulkActions">
     <% options = %w(mark_spam not_spam destroy).inject([]) {|a,action| a << [t("governor_comments.#{action}"), action] } %>
     <%= select_tag :bulk_operation, options_for_select([['Action', ''], *options]) %>
     <%= submit_tag t('governor_comments.submit') %>
   </div>
+  <% end %>
+  <%= bulk_actions %>
   <table class="comments">
     <tr>
       <th></th>
@@ -39,5 +42,6 @@
       </tr>
     <% end %>
   </table>
+  <%= bulk_actions %>
   
 <% end %>
