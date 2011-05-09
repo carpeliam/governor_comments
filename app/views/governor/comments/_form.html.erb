@@ -8,4 +8,4 @@
 <% end %>
 <%= f.text_field :title %> <%= f.label :title %><br/>
 <%= f.text_area :content, :size => '50x7' %>
-<p><%= f.submit "#{action_name.capitalize} Comment" %></p>
+<p><%= f.submit "#{f.object.new_record? ? 'New' : 'Edit'} Comment" %></p>
