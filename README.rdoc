@@ -19,9 +19,9 @@ comment on your blog.
 
 == Setting Up
 
-First, install Governor[http://carpeliam.github.com/governor/]. Then, in
-your Gemfile, add the following:
+In your Gemfile, add the following:
 
+    gem 'governor'
     gem 'governor_comments'
 
 Once you've installed the gem into your app, you need to run the generator:
