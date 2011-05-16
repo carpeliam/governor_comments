@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{governor_comments}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Liam Morley"]
-  s.date = %q{2011-05-08}
+  s.date = %q{2011-05-16}
   s.description = %q{Comments plugin for the Rails 3-based Governor blogging system.}
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
@@ -43,9 +43,9 @@ Gem::Specification.new do |s|
     "lib/generators/governor/templates/migrations/create_comments.rb",
     "lib/generators/governor/templates/models/comment.rb",
     "lib/generators/governor/templates/models/guest.rb",
-    "lib/governor/controllers/methods.rb",
     "lib/governor_comments.rb",
     "lib/governor_comments/comment.rb",
+    "lib/governor_comments/controllers/methods.rb",
     "lib/governor_comments/rails.rb",
     "script/rails",
     "spec/controllers/governor/articles_controller_spec.rb",
