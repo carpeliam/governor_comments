@@ -1,4 +1,4 @@
-require File.expand_path('../governor/controllers/methods.rb',  __FILE__)
+require 'governor_comments/controllers/methods'
 require 'governor_comments/comment'
 require 'governor_comments/rails'
 
@@ -14,6 +14,9 @@ comments.set_routes do
       post 'mark_spam', 'not_spam'
     end
   end
+end
+comments.register_controller_callback do |controller|
+  controller.send :include, GovernorComments::Controllers::Methods
 end
 comments.register_model_callback do |base|
   association = Comment.reflect_on_association(:resource)
