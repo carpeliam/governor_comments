@@ -10,7 +10,7 @@ module Governor
     helper Governor::Controllers::Helpers
     
     def create
-      params[:comment][:commenter] = governor_logged_in? ? the_governor : Guest.find_or_create_by_email(params[:comment][:commenter])
+      params[:comment][:commenter] = governor_logged_in? ? the_governor : Guest.find_or_initialize_by_email(params[:comment][:commenter])
       @comment = resource.comments.new(params[:comment])
     
       respond_to do |format|
