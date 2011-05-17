@@ -15,6 +15,7 @@ module GovernorComments
       base.scope :public, base.where(:hidden => false)
       
       base.validates_presence_of :content
+      base.validates_presence_of :commenter
     end
     
     def mark_spam
