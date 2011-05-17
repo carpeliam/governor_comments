@@ -18,6 +18,8 @@ module Governor
         assigns[:comment].commenter.should == @user
         assigns[:article].should == @article
       end
+      
+      it "looks up returning guests by email"
     end
     
     context "#mark_spam" do

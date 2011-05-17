@@ -10,13 +10,12 @@ module Governor
     helper Governor::Controllers::Helpers
     
     def create
-      params[:comment][:commenter] = governor_logged_in? ? the_governor : Guest.new(params[:commenter])
-    
+      params[:comment][:commenter] = governor_logged_in? ? the_governor : Guest.find_or_create_by_email(params[:comment][:commenter])
       @comment = resource.comments.new(params[:comment])
     
       respond_to do |format|
         if @comment.save
-          @comment.update_attribute(:hidden, true) if @comment.respond_to?(:spam) and @comment.spam?
+          @comment.update_attribute(:hidden, true) if @comment.respond_to?(:spam?) and @comment.spam?
           flash[:notice] = 'Your comment was successfully added.'
           format.html { redirect_to resource }
           format.xml  { render :xml => @comment, :status => :created, :location => @comment }
