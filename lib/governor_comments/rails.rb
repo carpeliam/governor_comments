@@ -1,7 +1,7 @@
 module GovernorComments
   class Engine < ::Rails::Engine
     config.to_prepare do
-      Governor::ArticlesController.helper GovernorCommentsHelper
+      ActionController::Base.helper GovernorCommentsHelper
     end
   end
 end
