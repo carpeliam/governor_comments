@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{governor_comments}
-  s.version = "0.2.5"
+  s.version = "0.2.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Liam Morley"]
-  s.date = %q{2011-05-18}
+  s.date = %q{2011-06-20}
   s.description = %q{Comments plugin for the Rails 3-based Governor blogging system.}
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
@@ -52,6 +52,7 @@ Gem::Specification.new do |s|
     "spec/controllers/governor/comments_controller_spec.rb",
     "spec/governor_comments_spec.rb",
     "spec/models/article_spec.rb",
+    "spec/models/comment_spec.rb",
     "spec/rails_app/.gitignore",
     "spec/rails_app/Gemfile",
     "spec/rails_app/Gemfile.lock",
@@ -120,6 +121,7 @@ Gem::Specification.new do |s|
     "spec/controllers/governor/comments_controller_spec.rb",
     "spec/governor_comments_spec.rb",
     "spec/models/article_spec.rb",
+    "spec/models/comment_spec.rb",
     "spec/rails_app/app/controllers/application_controller.rb",
     "spec/rails_app/app/controllers/home_controller.rb",
     "spec/rails_app/app/helpers/application_helper.rb",
