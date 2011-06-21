@@ -1,6 +1,6 @@
 module GovernorComments
   module Comment
-    require 'md5'
+    require 'digest/md5'
     def self.included(base)
       base.belongs_to :commenter, :polymorphic => true
       if defined?(Rakismet)
@@ -31,7 +31,7 @@ module GovernorComments
     
     def gravatar_url(size = 48, default = "http://github.com/images/gravatars/gravatar-#{size}.png")
       if commenter.respond_to? :email
-        hash = MD5::md5 commenter.email.downcase
+        hash = Digest::MD5.hexdigest commenter.email.downcase
         "http://www.gravatar.com/avatar/#{hash}?s=#{size}&r=pg&d=#{CGI::escape(default)}"
       else
         default
