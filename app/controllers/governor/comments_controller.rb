@@ -3,6 +3,7 @@ module Governor
     include Governor::Controllers::Helpers
     
     before_filter :init_resource
+    before_filter :validate_params, :only => [:create]
     before_filter :authorize_commenter!, :except => [:new, :create]
     before_filter :get_comment, :only => [:edit, :update, :destroy, :mark_spam, :not_spam]
     
@@ -74,6 +75,12 @@ module Governor
         authorize_governor!
       else
         redirect_to root_path unless governor_authorized?(:edit, resource)
+      end
+    end
+    
+    def validate_params
+      unless params.has_key?(:comment)
+        render :text => 'Please include the comment.', :status => :bad_request
       end
     end
   end

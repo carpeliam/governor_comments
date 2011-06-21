@@ -16,6 +16,7 @@ module GovernorComments
       
       base.validates_presence_of :content
       base.validates_presence_of :commenter
+      base.validates_associated :commenter
     end
     
     def mark_spam

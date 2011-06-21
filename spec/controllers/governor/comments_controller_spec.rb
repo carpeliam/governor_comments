@@ -19,7 +19,10 @@ module Governor
         assigns[:article].should == @article
       end
       
-      it "looks up returning guests by email"
+      it "handles bad input from nasty spammers" do
+        post :create, :governor_mapping => :articles, :article_id => @article.id
+        response.response_code.should == 400
+      end
     end
     
     context "#mark_spam" do
